@@ -31,7 +31,7 @@ app.post('/send-email', async (req, res) => {
         from: email, 
         to: 'Ahsanjay.official@icloud.com', 
         replyTo: `${email}`,
-        subject: `Message from ${name}`, 
+        subject: `${name} just messaged you`, 
         text: message, 
     };
 
