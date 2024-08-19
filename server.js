@@ -2,18 +2,16 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: '*' })); 
 app.use(bodyParser.json());
 
-const EMAIL_USER = process.env.EMAIL_USER;
-const EMAIL_PASS = process.env.EMAIL_PASS;
-
+const EMAIL_USER = process.env.EMAIL_USER; 
+const EMAIL_PASS = process.env.EMAIL_PASS; 
 
 app.post('/send-email', async (req, res) => {
-    const { name, email, message } = req.body; 
+    const { name, email, message } = req.body;
 
     if (!email || !message) {
         return res.status(400).send('Email and message are required');
@@ -28,11 +26,11 @@ app.post('/send-email', async (req, res) => {
     });
 
     const mailOptions = {
-        from: email, 
+        from: EMAIL_USER, 
         to: 'Ahsanjay.official@icloud.com', 
         replyTo: `${email}`,
         subject: `${name} just messaged you`, 
-        text: message, 
+        text: message,  
     };
 
     try {
