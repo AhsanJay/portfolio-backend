@@ -26,10 +26,10 @@ app.post('/send-email', async (req, res) => {
     });
 
     const mailOptions = {
-        from: EMAIL_USER, 
+        from: `${email}`, 
         to: 'Ahsanjay.official@icloud.com', 
         replyTo: email,
-        subject: `Message from ${name} and email there email is ${email}`, 
+        subject: `Message from ${name}`, 
         text: message, 
     };
 
